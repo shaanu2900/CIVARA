@@ -1,0 +1,24 @@
+- id: msg_late_night_nonurgent
+when:
+context: late_night
+urgency: non_emergency
+action: send_message
+policy: ask_permission
+reason: "Avoid non‑urgent late‑night outreach."
+
+
+- id: escalate_emergency
+when:
+signal: smoke_alarm
+action: escalate_alert
+policy: auto_act
+reason: "Safety override for emergencies."
+
+
+- id: meeting_with_senior
+when:
+relation: reports_to
+action: schedule_meeting
+context: work_hours
+policy: ask_permission
+reason: "Respect senior’s calendar and norms."
